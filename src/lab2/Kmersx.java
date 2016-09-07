@@ -43,11 +43,7 @@ public class Kmersx {
 		/* 
 		 * print to the console 1,000 randomly generated 
 		 * DNA 3 mers (e.g. “ACA”, “TCG” )
-		 * where the frequency of A,C,G and T is 
-		 * p(A) = 0.12
-	 	 *  p(C) = 0.38
-		 *  p(G) = 0.39
-		 *  p(T) = 0.11
+		 * where the frequency of A,C,G and T is 25% and is uniformly sampled.
 		 */
 		int aaacnt = 0 ;	
 		int aaacnttot = 0; 
