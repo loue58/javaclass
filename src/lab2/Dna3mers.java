@@ -9,6 +9,7 @@ public class Dna3mers {
 		 * print to the console 1,000 randomly generated 
 		 * DNA 3 mers (e.g. “ACA”, “TCG” )
 		 * where the frequency of A,C,G and T is 25% and is uniformly sampled.
+		 * 
 		 */
 
 		int NUM_TO_GEN = 1000 ;

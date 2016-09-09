@@ -7,6 +7,7 @@ public class Kmersx {
 	public static char[] getkmer (int kmerlength, char[] val, float[] freq){
 		/* generate a random sequence of length kmerlength
 		 * from val with frequency passed in freq
+		 * 
 		 */
 		// should check length of val is = length of freq
 		// and freqs total 1
