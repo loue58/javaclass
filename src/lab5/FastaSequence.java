@@ -18,6 +18,10 @@ public class FastaSequence {
 		return header;
 	}
 
+	@Override
+	public String toString() {
+		return getHeader() ;
+	}
 	// returns the DNA sequence of this FastaSequence
 	public String getSequence() {
 		return sequence;
@@ -76,12 +80,13 @@ public class FastaSequence {
 
 	public static void main(String[] args) throws Exception {
 		List<FastaSequence> fastaList = FastaSequence
-				.readFastaFile("C:\\Users\\Lisa\\Documents\\UNCC\\java\\contigs.fasta");
+				.readFastaFile("C:\\Users\\Lisa\\Documents\\UNCC\\java\\test.fasta");
 
 		for (FastaSequence fs : fastaList) {
 			System.out.println(fs.getHeader());
 			System.out.println(fs.getSequence());
 			System.out.println(fs.getGCRatio());
+		//	System.out.println(fs);
 		}
 	}
 
