@@ -14,11 +14,11 @@ public class ClusterJobs {
 	// File("/users/louellet/someData/In");
 	
 	// my windows machine
-	public static final File OUT_DIR = new File("/users/Lisa/lab8/Out");
-	public static final File RUN_DIR = new File("/users/Lisa/lab8/Run");
+	// public static final File OUT_DIR = new File("/users/Lisa/lab8/Out");
+	// public static final File RUN_DIR = new File("/users/Lisa/lab8/Run");
 	// mamba
-	// public static final File OUT_DIR = new File("/users/louellet/someData/Out");
-	// public static final File RUN_DIR = new File("/users/louellet/someData/Run");
+	 public static final File OUT_DIR = new File("/users/louellet/lab8/Out");
+	 public static final File RUN_DIR = new File("/users/louellet/lab8/Run");
 
 	public static final String OUT_SUFFIX = "Out.txt";
 
