@@ -7,7 +7,7 @@ public class Dna3mers {
 	public static void main(String[] args) {
 		/* 
 		 * print to the console 1,000 randomly generated 
-		 * DNA 3 mers (e.g. “ACA”, “TCG” )
+		 * DNA 3 mers (e.g. "ACA", "TCG" )
 		 * where the frequency of A,C,G and T is 25% and is uniformly sampled.
 		 * 
 		 */

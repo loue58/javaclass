@@ -13,7 +13,7 @@ public class FastaSequence {
 		this.sequence = sequence;
 	}
 
-	// returns the header of this sequence without the “>”
+	// returns the header of this sequence without the ">"
 	public String getHeader() {
 		return header;
 	}

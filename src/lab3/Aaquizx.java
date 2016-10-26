@@ -24,7 +24,7 @@ public class Aaquizx {
 		/** Quiz to drill on amino acids
 		 * The quiz is n seconds long - n being the first and only argument.
 		 * The program displays the full name
-		 * of an amino acid (like “alanine” ) 
+		 * of an amino acid (like "alanine" ) 
 		 * and asks the user to type in the one character code (like a)
 		 * The quiz ignores case in the answer.
 		 * The total score is the number of correct answers…
