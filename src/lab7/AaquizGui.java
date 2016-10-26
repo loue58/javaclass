@@ -28,7 +28,7 @@ public class AaquizGui extends JFrame {
 			"glutamic acid", "glycine", "histidine", "isoleucine", "leucine", "lysine", "methionine", "phenylalanine",
 			"proline", "serine", "threonine", "tryptophan", "tyrosine", "valine" };
 
-	private int nbrSecs;
+	private volatile int nbrSecs;
 	private Random random = new Random();
 	private long startTime = System.currentTimeMillis();
 	private long currentTime = System.currentTimeMillis();
@@ -37,6 +37,7 @@ public class AaquizGui extends JFrame {
 
 	private JButton startButton = new JButton("Start");
 	private JButton cancelButton = new JButton("Cancel");
+	private JTextField aaGameSecs = new JTextField();
 	private JTextField aaMessage = new JTextField();
 	private JTextArea aaInstruction = new JTextArea();
 	private JTextField aaLongName = new JTextField();
@@ -50,7 +51,8 @@ public class AaquizGui extends JFrame {
 		setLocationRelativeTo(null);
 		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(5, 0));
+		getContentPane().setLayout(new GridLayout(6, 0));
+		getContentPane().add(aaGameSecs);
 		getContentPane().add(aaInstruction);
 		aaInstruction.setEditable(false);
 		getContentPane().add(aaLongName);
@@ -70,7 +72,8 @@ public class AaquizGui extends JFrame {
 		getContentPane().add(getButtonPanel());
 		aaMessage.setText(" ");
 		aaAnswer.setEditable(false);
-		aaInstruction.setText("\n Press Start to begin the Quiz for " + nbrSecs + " seconds");
+		aaGameSecs.setText("Game will run for " + nbrSecs + " seconds");
+		aaInstruction.setText("\n Press Start to begin the Quiz.");
 		setJMenuBar(getMyMenuBar());
 		cancelButton.setEnabled(false);
 		startButton.setEnabled(true);
@@ -91,7 +94,7 @@ public class AaquizGui extends JFrame {
 				aaLongName.setText("");
 				aaAnswer.setText("");
 				aaAnswer.setEditable(false);
-				aaInstruction.setText("\n Cancelled - Press Start to begin the Quiz for " + nbrSecs + " seconds");
+				aaInstruction.setText("\n Cancelled - Press Start to begin the Quiz again.");
 				cancelButton.setEnabled(false);
 				startButton.setEnabled(true);
 			}
@@ -122,33 +125,37 @@ public class AaquizGui extends JFrame {
 		public void run() {
 			//
 			try {
-				currentTime = System.currentTimeMillis();
-				if (currentTime - startTime > nbrSecs * 1000) {
-					aaMessage.setText("\n You got " + correctAnswers + " right");
-					startButton.setEnabled(true);
-					aaLongName.setText("");
-					aaInstruction.setText("\n Press Start to play again for " + nbrSecs + " seconds");
-					aaAnswer.setText("");
-					aaAnswer.setEditable(false);
-					cancelButton.setEnabled(false);
-					startButton.setEnabled(true);
-				} else {
-					// just do something long to test Cancel
-					int numTimes = 0;
-					while (!cancel && numTimes < 100) {
-						numTimes++;
-						Thread.sleep(30);
-					}
-					if (!cancel) {
-						if (aaAnswer.getText() != null & aaAnswer.getText().length() > 0) {
-							if (aaAnswer.getText().toUpperCase().equals(SHORT_NAMES[aaIndex])) {
-								aaMessage.setText("Correct!");
-								correctAnswers++;
-							} else {
-								aaMessage.setText("Wrong! " + "Abbreviation for " + FULL_NAMES[aaIndex] + " is "
-										+ SHORT_NAMES[aaIndex]);
-							}
+
+				// just do something long to test Cancel
+				int numTimes = 0;
+				while (!cancel && numTimes < 100) {
+					numTimes++;
+					Thread.sleep(30);
+				}
+				if (!cancel) {
+					if (aaAnswer.getText() != null & aaAnswer.getText().length() > 0) {
+						if (aaAnswer.getText().toUpperCase().equals(SHORT_NAMES[aaIndex])) {
+							aaMessage.setText("Correct!");
+							correctAnswers++;
+						} else {
+							aaMessage.setText("Wrong! " + "Abbreviation for " + FULL_NAMES[aaIndex] + " is "
+									+ SHORT_NAMES[aaIndex]);
 						}
+					}
+					currentTime = System.currentTimeMillis();
+					// if user has changed nbrSecs in middle of a quiz - use the
+					// new value
+					// maybe they got tired and wanted to shorten the quiz
+					if (currentTime - startTime > nbrSecs * 1000) {
+						aaMessage.setText(aaMessage.getText()+ ".   You got " + correctAnswers + " right");
+						startButton.setEnabled(true);
+						aaLongName.setText("");
+						aaInstruction.setText("\n Press Start to play again.");
+						aaAnswer.setText("");
+						aaAnswer.setEditable(false);
+						cancelButton.setEnabled(false);
+						startButton.setEnabled(true);
+					} else {
 						aaLongName.setText(getQuestion());
 						aaAnswer.setText("");
 						aaInstruction.setText(
@@ -208,6 +215,7 @@ public class AaquizGui extends JFrame {
 
 				if ((s != null) && (s.length() > 0)) {
 					nbrSecs = Integer.parseInt(s);
+					aaGameSecs.setText("Game will run for " + nbrSecs + " seconds");
 					return;
 				}
 
