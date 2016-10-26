@@ -29,7 +29,7 @@ public class FastaSequence {
 		return sequence;
 	}
 
-	// returns the number of G’s and C’s divided by the length of this sequence
+	// returns the number of Gs and Cs divided by the length of this sequence
 	public float getGCRatio() {
 		int GCCount = 0;
 		{

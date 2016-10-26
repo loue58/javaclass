@@ -27,7 +27,7 @@ public class Aaquizx {
 		 * of an amino acid (like "alanine" ) 
 		 * and asks the user to type in the one character code (like a)
 		 * The quiz ignores case in the answer.
-		 * The total score is the number of correct answers…
+		 * The total score is the number of correct answers
 		 * A report at the end tells the quiz taker the number right and wrong
 		 * for each amino acid
 		 * @author Lisa Ouellette 
