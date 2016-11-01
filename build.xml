@@ -67,6 +67,11 @@
             <classpath refid="Javaclass.classpath"/>
         </java>
     </target>
+    <target name="ClusterJobs">
+        <java classname="lab8.ClusterJobs" failonerror="true" fork="yes">
+            <classpath refid="Javaclass.classpath"/>
+        </java>
+    </target>
     <target name="Dna3mers">
         <java classname="lab2.Dna3mers" failonerror="true" fork="yes">
             <classpath refid="Javaclass.classpath"/>
@@ -119,11 +124,6 @@
     </target>
     <target name="stringimmutability">
         <java classname="examples.stringimmutability" failonerror="true" fork="yes">
-            <classpath refid="Javaclass.classpath"/>
-        </java>
-    </target>
-    <target name="ClusterJobs">
-        <java classname="lab8.ClusterJobs" failonerror="true" fork="yes">
             <classpath refid="Javaclass.classpath"/>
         </java>
     </target>

@@ -39,7 +39,7 @@ public class ClusterJobs {
 
 			BufferedWriter writer = new BufferedWriter(new FileWriter(runFile));
 
-			writer.write("java -jar /users/louellet/lab8/dist/lab8.jar " + "-o \""
+			writer.write("java -cp /users/louellet/mygit/javaclass/bin/ lab8.WriteClusterFile " + "\""
 					+ OutFile.getAbsolutePath() + "\"\n");
 
 			writer.write("gzip " + OutFile.getAbsolutePath() + " \n");
